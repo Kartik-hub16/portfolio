@@ -25,6 +25,9 @@
     <div class="blob blob-2"></div>
   </div>
 
+  <!-- MOBILE OVERLAY BACKDROP -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
   <div class="app-container">
 
     <!-- LEFT SIDEBAR (glass panel) -->
@@ -36,6 +39,9 @@
             <span class="logo-name">Kartik Kohad</span>
             <span class="logo-meta">ML Engineer · India</span>
           </div>
+          <button class="mobile-sidebar-close" onclick="toggleMobileSidebar()" aria-label="Close menu">
+            <i data-lucide="x"></i>
+          </button>
         </div>
 
         <nav class="sidebar-nav">

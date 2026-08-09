@@ -295,6 +295,18 @@ function setupNavScroll() {
   }, observerOptions);
 
   sections.forEach(sec => observer.observe(sec));
+
+  // Close mobile sidebar on nav item click
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 868) {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (sidebar) sidebar.classList.remove('mobile-open');
+        if (overlay) overlay.classList.remove('active');
+      }
+    });
+  });
 }
 
 /* --- Command Palette (Cmd + K) --- */
@@ -421,7 +433,9 @@ window.downloadResume = function() {
 
 window.toggleMobileSidebar = function() {
   const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
   if (sidebar) sidebar.classList.toggle('mobile-open');
+  if (overlay) overlay.classList.toggle('active');
 };
 
 /* Theme Toggle (Dark / Light) */
