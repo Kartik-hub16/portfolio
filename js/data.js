@@ -87,7 +87,7 @@ const PORTFOLIO_DATA = {
       status: "Live",
       statusClass: "live",
       github: "https://github.com/Kartik-hub16/Cyber_Threat_Detection_System",
-      demo: "https://github.com/Kartik-hub16/Cyber_Threat_Detection_System",
+      demo: "",
       features: [
         "File integrity & malware scan (MD5/SHA1/SHA256 cryptographic hashing)",
         "URL phishing-heuristics engine with CVSS-style severity scoring",
@@ -108,7 +108,7 @@ const PORTFOLIO_DATA = {
       status: "Live",
       statusClass: "live",
       github: "https://github.com/Kartik-hub16/Professional_Portfolio_Generator",
-      demo: "https://github.com/Kartik-hub16/Professional_Portfolio_Generator",
+      demo: "",
       features: [
         "Two-step intake flow: basic profile info → detailed form",
         "AI-generated professional bio & project copy powered by Groq (Llama 3.3)",
@@ -167,7 +167,7 @@ const PORTFOLIO_DATA = {
       status: "In Progress",
       statusClass: "in-progress",
       github: "https://github.com/Kartik-hub16/CyberShield-AI",
-      demo: "https://github.com/Kartik-hub16/CyberShield-AI",
+      demo: "",
       features: [
         "6 flagship modules upgraded to real trained ML models & live threat-intel APIs (phishing classifier, supply chain scanner, malware/IP reputation, UEBA login anomaly, HIBP breach check, deepfake audio detection)",
         "Remaining modules operating as transparent heuristic engines for audit accuracy",
