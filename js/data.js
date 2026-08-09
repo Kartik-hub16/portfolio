@@ -122,8 +122,8 @@ const PORTFOLIO_DATA = {
     {
       id: "talent-iq-platform",
       name: "TalentIQ — AI Career Intelligence Platform",
-      category: "fullstack",
-      problem: "Job seekers struggle to quickly evaluate whether their resume will clear ATS algorithms — and converting parsed resume data into a web portfolio requires heavy extra effort.",
+      category: "ai-llm",
+      problem: "Job seekers need to know fast whether their resume will clear ATS and land with a recruiter — and building a portfolio from that resume is extra friction. TalentIQ merges parsing, ATS scoring, and portfolio generation into one platform.",
       stack: ["Django REST", "Python 3.13+", "React 19", "Vite", "PostgreSQL", "Gemini AI", "Docker", "Nginx"],
       status: "Live",
       statusClass: "live",
@@ -131,33 +131,32 @@ const PORTFOLIO_DATA = {
       demo: "https://talent-iq-snowy.vercel.app",
       features: [
         "AI-powered resume parsing engine powered by Gemini AI",
-        "ATS scoring algorithms & keyword optimization recommendations",
+        "ATS scoring & keyword optimization recommendations",
         "Automated Web Portfolio Builder generated from parsed resume data",
-        "Admin Intelligence Dashboard & Analytics tracking across 17 delivery phases",
-        "Secure JWT authentication and real-time notification platform",
+        "Dashboard analytics, JWT auth & Admin Intelligence Dashboard",
+        "Real-time notification platform across 17 delivery phases roadmap",
         "Containerized orchestration with Docker Compose & Nginx reverse proxy"
       ],
-      learned: "Architecting a multi-app enterprise Django SaaS framework (accounts, resumes, parser, portfolio, ats), integrating Gemini AI for structured document extraction, and orchestrating containerized deployments on Render & Vercel.",
-      metrics: "17-phase delivery roadmap · Production Django + React 19"
+      learned: "Architecting a full-stack SaaS app through a 17-phase delivery roadmap, integrating Gemini AI for resume parsing, structuring a scalable Django app across separate services (accounts, resumes, parser, portfolio, ats), and containerized deployment with Docker Compose + Nginx.",
+      metrics: "17-Phase Delivery Roadmap · Gemini AI + Django REST + React 19"
     },
     {
       id: "resume-builder-spinoff",
       name: "Resume Builder (TalentIQ Spinoff)",
-      category: "fullstack",
-      problem: "A lightweight, standalone microservice derived from TalentIQ's core engine — allowing users to quickly build, format, and share resumes without full platform onboarding.",
-      stack: ["Python", "Django", "React", "ML Engine", "Docker", "Vercel"],
+      category: "ai-llm",
+      problem: "A focused, standalone slice of TalentIQ's resume-building flow — generate and share a resume without the full platform.",
+      stack: ["Python", "Django", "React", "ML Module", "Docker", "Vercel"],
       status: "Live",
       statusClass: "live",
       github: "https://github.com/KRISHNARAJSINH0/Resume_builder_from_TalentIQ",
       demo: "https://resume-builder-from-talent-iq.vercel.app",
       features: [
-        "Standalone AI-assisted resume creation flow",
-        "Dedicated Machine Learning processing module for resume scoring",
-        "Zero-friction shareable web resume endpoints",
-        "Docker containerized setup for quick local and cloud deployment"
+        "AI-assisted resume generation and instant shareable output",
+        "Dedicated Machine Learning module operating alongside Django backend",
+        "Containerized setup with Docker for cloud deployment on Vercel"
       ],
-      learned: "Decoupling complex monolithic SaaS sub-modules into lightweight microservices, streamlining single-purpose user workflows, and packaging isolated ML utilities for standalone deployment.",
-      metrics: "Decoupled SaaS microservice · Fast Vercel deployment"
+      learned: "Decoupling a focused feature into a standalone microservice, structuring a dedicated ML module alongside a Django backend, and containerizing with Docker for Vercel deployment.",
+      metrics: "Standalone SaaS Spinoff · Docker & Vercel"
     },
     {
       id: "cybershield-ai",

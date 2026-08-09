@@ -1,52 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kartik Kohad — Portfolio</title>
-  <meta name="description" content="Personal portfolio of Kartik Kohad — Aspiring ML Engineer & Data Analyst, Computer Science student. Projects, skills, certificates, and contact." />
+  <title>Kartik Kohad — Data Analyst & ML Portfolio</title>
+  <meta name="description" content="Personal portfolio of Kartik Kohad — Aspiring ML Engineer & Data Analyst. Projects, skills, telemetry, experience, and certifications." />
 
   <!-- Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Glassmorphism Theme Stylesheet -->
+  <!-- Clean Data Analyst Theme Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-  <!-- BACKGROUND BLOBS (translucent depth behind glass panels) -->
-  <div class="bg-blobs" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-  </div>
-
-  <!-- MOBILE OVERLAY BACKDROP -->
-  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
-
   <div class="app-container">
 
-    <!-- LEFT SIDEBAR (glass panel) -->
+    <!-- LEFT SIDEBAR (Fixed White Card Panel ~240px) -->
     <aside class="sidebar" id="sidebar">
       <div>
         <div class="sidebar-header">
           <div class="logo-mark">KK</div>
           <div class="logo-info">
             <span class="logo-name">Kartik Kohad</span>
-            <span class="logo-meta">ML Engineer · India</span>
+            <span class="logo-meta">Data &amp; ML · India</span>
           </div>
-          <button class="mobile-sidebar-close" onclick="toggleMobileSidebar()" aria-label="Close menu">
-            <i data-lucide="x"></i>
-          </button>
         </div>
 
         <nav class="sidebar-nav">
           <a href="#overview" class="nav-item active" id="nav-overview">
-            <i data-lucide="grid" class="nav-icon"></i>
+            <i data-lucide="bar-chart-2" class="nav-icon"></i>
             <span>Overview</span>
           </a>
           <a href="#hero" class="nav-item" id="nav-hero">
@@ -99,7 +87,7 @@
     <!-- MAIN WRAPPER -->
     <div class="main-wrapper">
 
-      <!-- TOP BAR (glass) -->
+      <!-- TOP BAR (Thin Sticky Header) -->
       <header class="topbar">
         <div style="display: flex; align-items: center; gap: 12px;">
           <button class="mobile-toggle" onclick="toggleMobileSidebar()" aria-label="Toggle navigation menu" id="mobileToggleBtn">
@@ -113,10 +101,9 @@
         </div>
 
         <div class="topbar-actions">
-          <!-- Light / Dark mode toggle -->
           <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">
-            <i data-lucide="sun" id="themeIconSun" style="width:16px;height:16px;display:none;"></i>
-            <i data-lucide="moon" id="themeIconMoon" style="width:16px;height:16px;"></i>
+            <i data-lucide="sun" id="themeIconSun" style="width:16px;height:16px;"></i>
+            <i data-lucide="moon" id="themeIconMoon" style="width:16px;height:16px;display:none;"></i>
           </button>
           <button class="btn btn-secondary btn-mono btn-sm" onclick="copyEmail()" id="copyEmailBtn">
             <i data-lucide="copy" style="width: 13px; height: 13px;"></i> Copy Email
@@ -134,7 +121,9 @@
         <section class="section" id="overview">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="activity" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="activity" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Metrics &amp; Key Indicators</h2>
             </div>
             <span class="section-tag">LIVE TELEMETRY</span>
@@ -153,7 +142,7 @@
                 <span class="status-dot"></span>
                 <span>Available for opportunities</span>
               </div>
-              <span class="section-tag">LAST DEPLOYED: AUG 2026</span>
+              <span class="section-tag">UPDATED: AUG 2026</span>
             </div>
 
             <div class="hero-main">
@@ -183,7 +172,7 @@
               </a>
               <a href="https://www.linkedin.com/in/kartik-kohad-885505325" target="_blank" class="social-pill" id="socialLinkedin">
                 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
                 <span>LinkedIn</span>
               </a>
@@ -199,7 +188,9 @@
         <section class="section" id="about">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="file-text" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="file-text" class="section-icon"></i>
+              </div>
               <h2 class="section-title">System Bio</h2>
             </div>
             <span class="section-tag">OVERVIEW</span>
@@ -222,7 +213,9 @@
         <section class="section" id="skills">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="layers" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="layers" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Tech Stack</h2>
             </div>
             <span class="section-tag">COLLAPSIBLE CATEGORIES</span>
@@ -237,7 +230,9 @@
         <section class="section" id="projects">
           <div class="projects-header-bar">
             <div class="section-title-group">
-              <i data-lucide="box" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="box" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Projects Telemetry</h2>
             </div>
 
@@ -270,7 +265,9 @@
         <section class="section" id="experience">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="clock" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="clock" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Experience &amp; Education</h2>
             </div>
             <span class="section-tag">CHRONOLOGICAL LOG</span>
@@ -287,7 +284,9 @@
         <section class="section" id="learning">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="book-open" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="book-open" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Learning Now</h2>
             </div>
             <span class="section-tag">ACTIVE FOCUS</span>
@@ -302,7 +301,9 @@
         <section class="section" id="certificates">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="award" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="award" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Certificates &amp; Credentials</h2>
             </div>
             <span class="section-tag">VERIFIED CREDENTIALS</span>
@@ -317,7 +318,9 @@
         <section class="section" id="contact">
           <div class="section-header">
             <div class="section-title-group">
-              <i data-lucide="mail" class="section-icon"></i>
+              <div class="section-icon-badge">
+                <i data-lucide="mail" class="section-icon"></i>
+              </div>
               <h2 class="section-title">Direct Communication</h2>
             </div>
             <span class="section-tag">GET IN TOUCH</span>
@@ -325,7 +328,7 @@
 
           <div class="contact-grid">
             <div class="contact-info-panel">
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+              <p style="font-size: 14px; color: var(--text-body); line-height: 1.6;">
                 Open for full-time ML Engineering and Data Science roles, AI engineering positions, research collaborations, and technical discussions.
               </p>
 
