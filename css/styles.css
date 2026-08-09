@@ -1023,6 +1023,28 @@ ol {
   font-weight: 700;
 }
 
+.btn-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-teal);
+  background-color: var(--accent-teal-tint);
+  border: 1px solid var(--accent-teal-border);
+  transition: all var(--transition-fast);
+}
+
+.btn-live-pill:hover {
+  background-color: var(--accent-teal);
+  color: #FFFFFF;
+  border-color: var(--accent-teal);
+  transform: translateY(-1px);
+}
+
 /* 10. TIMELINE */
 .timeline-card {
   padding: 24px;

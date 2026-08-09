@@ -97,28 +97,39 @@ function renderProjects(filterCategory = 'all') {
     return;
   }
 
-  tableBody.innerHTML = filtered.map(p => `
-    <tr onclick="openProjectModal('${p.id}')">
-      <td>
-        <div class="project-name-cell">
-          <span>${p.name}</span>
-          <span class="project-desc-sub">${p.problem}</span>
-        </div>
-      </td>
-      <td>
-        <div class="stack-tags">
-          ${p.stack.slice(0, 4).map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
-          ${p.stack.length > 4 ? `<span class="tag-pill">+${p.stack.length - 4}</span>` : ''}
-        </div>
-      </td>
-      <td>
-        <span class="badge-status ${p.statusClass}">● ${p.status}</span>
-      </td>
-      <td>
-        <span class="link-arrow">View →</span>
-      </td>
-    </tr>
-  `).join('');
+  tableBody.innerHTML = filtered.map(p => {
+    const hasLiveUrl = p.demo && !p.demo.includes('github.com');
+
+    return `
+      <tr onclick="openProjectModal('${p.id}')">
+        <td>
+          <div class="project-name-cell">
+            <span>${p.name}</span>
+            <span class="project-desc-sub">${p.problem}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stack-tags">
+            ${p.stack.slice(0, 4).map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+            ${p.stack.length > 4 ? `<span class="tag-pill">+${p.stack.length - 4}</span>` : ''}
+          </div>
+        </td>
+        <td>
+          <span class="badge-status ${p.statusClass}">● ${p.status}</span>
+        </td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            ${hasLiveUrl ? `
+              <a href="${p.demo}" target="_blank" onclick="event.stopPropagation();" class="btn-live-pill" title="Open Live Project">
+                Live Demo ↗
+              </a>
+            ` : ''}
+            <span class="link-arrow">View Details →</span>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 
   if (window.lucide) window.lucide.createIcons();
 }
