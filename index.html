@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartik Kohad — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Kartik Kohad — Aspiring ML Engineer & Data Analyst, Computer Science student. Projects, skills, certificates, and contact." />
+
+  <!-- Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Glassmorphism Theme Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND BLOBS (translucent depth behind glass panels) -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- LEFT SIDEBAR (glass panel) -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div class="logo-mark">KK</div>
+          <div class="logo-info">
+            <span class="logo-name">Kartik Kohad</span>
+            <span class="logo-meta">ML Engineer · India</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#overview" class="nav-item active" id="nav-overview">
+            <i data-lucide="grid" class="nav-icon"></i>
+            <span>Overview</span>
+          </a>
+          <a href="#hero" class="nav-item" id="nav-hero">
+            <i data-lucide="user" class="nav-icon"></i>
+            <span>Profile</span>
+          </a>
+          <a href="#about" class="nav-item" id="nav-about">
+            <i data-lucide="file-text" class="nav-icon"></i>
+            <span>About</span>
+          </a>
+          <a href="#skills" class="nav-item" id="nav-skills">
+            <i data-lucide="layers" class="nav-icon"></i>
+            <span>Tech Stack</span>
+          </a>
+          <a href="#projects" class="nav-item" id="nav-projects">
+            <i data-lucide="box" class="nav-icon"></i>
+            <span>Projects</span>
+          </a>
+          <a href="#experience" class="nav-item" id="nav-experience">
+            <i data-lucide="clock" class="nav-icon"></i>
+            <span>Experience</span>
+          </a>
+          <a href="#learning" class="nav-item" id="nav-learning">
+            <i data-lucide="book-open" class="nav-icon"></i>
+            <span>Learning Now</span>
+          </a>
+          <a href="#certificates" class="nav-item" id="nav-certificates">
+            <i data-lucide="award" class="nav-icon"></i>
+            <span>Certificates</span>
+          </a>
+          <a href="#contact" class="nav-item" id="nav-contact">
+            <i data-lucide="mail" class="nav-icon"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Available for work</span>
+        </div>
+        <button class="cmd-shortcut" onclick="toggleCmdPalette()" id="cmdShortcutBtn">
+          <span>Command Menu</span>
+          <span class="kbd-badge">⌘K</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+
+      <!-- TOP BAR (glass) -->
+      <header class="topbar">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button class="mobile-toggle" onclick="toggleMobileSidebar()" aria-label="Toggle navigation menu" id="mobileToggleBtn">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="breadcrumbs">
+            <span class="breadcrumb-root">Dashboard</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-active" id="breadcrumbActive">Overview</span>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <!-- Light / Dark mode toggle -->
+          <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <i data-lucide="sun" id="themeIconSun" style="width:16px;height:16px;display:none;"></i>
+            <i data-lucide="moon" id="themeIconMoon" style="width:16px;height:16px;"></i>
+          </button>
+          <button class="btn btn-secondary btn-mono btn-sm" onclick="copyEmail()" id="copyEmailBtn">
+            <i data-lucide="copy" style="width: 13px; height: 13px;"></i> Copy Email
+          </button>
+          <button class="btn btn-primary btn-mono btn-sm" onclick="downloadResume()" id="downloadResumeBtn">
+            <i data-lucide="download" style="width: 13px; height: 13px;"></i> Resume ↓
+          </button>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT AREA -->
+      <main class="main-content">
+
+        <!-- 1. OVERVIEW METRICS GRID -->
+        <section class="section" id="overview">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="activity" class="section-icon"></i>
+              <h2 class="section-title">Metrics &amp; Key Indicators</h2>
+            </div>
+            <span class="section-tag">LIVE TELEMETRY</span>
+          </div>
+
+          <div class="metrics-grid" id="metricsGrid">
+            <!-- Dynamic Inject via main.js -->
+          </div>
+        </section>
+
+        <!-- 2. HERO SECTION -->
+        <section class="section" id="hero">
+          <div class="card-panel hero-card">
+            <div class="hero-status-bar">
+              <div class="availability-badge">
+                <span class="status-dot"></span>
+                <span>Available for opportunities</span>
+              </div>
+              <span class="section-tag">LAST DEPLOYED: AUG 2026</span>
+            </div>
+
+            <div class="hero-main">
+              <h1 class="hero-name">Kartik Kohad</h1>
+              <div class="hero-role">
+                <span>Aspiring ML Engineer &amp; Data Analyst</span>
+              </div>
+              <span class="hero-mono-tag">&lt;B.Tech Engineering Student /&gt;</span>
+            </div>
+
+            <div class="hero-tagline-quote">
+              "Building end-to-end pipelines that go from raw data to a trained model to a real, usable product."
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary btn-mono" id="heroProjectsBtn">View Projects</a>
+              <a href="#contact" class="btn btn-secondary btn-mono" id="heroContactBtn">Contact Me</a>
+              <button onclick="downloadResume()" class="btn btn-secondary btn-mono" id="heroResumeBtn">Resume Download ↓</button>
+            </div>
+
+            <div class="social-pills-row">
+              <a href="https://github.com/Kartik-hub16" target="_blank" class="social-pill" id="socialGithub">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/kartik-kohad-885505325" target="_blank" class="social-pill" id="socialLinkedin">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <button onclick="copyEmail()" class="social-pill" id="socialEmail">
+                <i data-lucide="mail" class="social-icon"></i>
+                <span>kartikkohad16@gmail.com</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. ABOUT PANEL -->
+        <section class="section" id="about">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="file-text" class="section-icon"></i>
+              <h2 class="section-title">System Bio</h2>
+            </div>
+            <span class="section-tag">OVERVIEW</span>
+          </div>
+
+          <div class="card-panel about-card">
+            <div class="about-subtitle">
+              Role: Aspiring ML Engineer &amp; Data Analyst • Location: India • Status: Open to opportunities
+            </div>
+            <p class="about-text">
+              I'm a Computer Science student focused on machine learning engineering and data analysis — building end-to-end pipelines that go from raw data to a trained model to a real, usable product. Recent projects span resume parsing/NLP, security threat detection, and full-stack AI platforms like TalentIQ.
+            </p>
+            <p class="about-text">
+              I'm currently going deeper into generative AI and agentic AI systems — moving from single-shot model calls toward AI that can plan, use tools, and complete multi-step tasks — alongside the fundamentals: clean data pipelines, sound model evaluation, and production-ready backend/API design.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. TECH STACK (Collapsible Category Chips) -->
+        <section class="section" id="skills">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="layers" class="section-icon"></i>
+              <h2 class="section-title">Tech Stack</h2>
+            </div>
+            <span class="section-tag">COLLAPSIBLE CATEGORIES</span>
+          </div>
+
+          <div class="accordion-container" id="techStackAccordion">
+            <!-- Dynamic Inject via main.js -->
+          </div>
+        </section>
+
+        <!-- 5. PROJECTS TABLE -->
+        <section class="section" id="projects">
+          <div class="projects-header-bar">
+            <div class="section-title-group">
+              <i data-lucide="box" class="section-icon"></i>
+              <h2 class="section-title">Projects Telemetry</h2>
+            </div>
+
+            <div class="project-filters">
+              <button class="filter-btn active" onclick="filterProjects('all', this)" id="filterAll">All (5)</button>
+              <button class="filter-btn" onclick="filterProjects('security', this)" id="filterSecurity">Security</button>
+              <button class="filter-btn" onclick="filterProjects('ai-llm', this)" id="filterAI">AI / LLM</button>
+              <button class="filter-btn" onclick="filterProjects('fullstack', this)" id="filterFullstack">Fullstack</button>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="projects-table">
+              <thead>
+                <tr>
+                  <th style="width: 32%;">Project Name &amp; Scope</th>
+                  <th style="width: 35%;">Tech Stack</th>
+                  <th style="width: 18%;">Status</th>
+                  <th style="width: 15%;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="projectsTableBody">
+                <!-- Dynamic Inject via main.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 6. EXPERIENCE / TIMELINE -->
+        <section class="section" id="experience">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="clock" class="section-icon"></i>
+              <h2 class="section-title">Experience &amp; Education</h2>
+            </div>
+            <span class="section-tag">CHRONOLOGICAL LOG</span>
+          </div>
+
+          <div class="card-panel timeline-card">
+            <div class="timeline-list" id="timelineList">
+              <!-- Dynamic Inject via main.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. LEARNING NOW GRID -->
+        <section class="section" id="learning">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="book-open" class="section-icon"></i>
+              <h2 class="section-title">Learning Now</h2>
+            </div>
+            <span class="section-tag">ACTIVE FOCUS</span>
+          </div>
+
+          <div class="learning-grid" id="learningGrid">
+            <!-- Dynamic Inject via main.js -->
+          </div>
+        </section>
+
+        <!-- 8. CERTIFICATES SECTION -->
+        <section class="section" id="certificates">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="award" class="section-icon"></i>
+              <h2 class="section-title">Certificates &amp; Credentials</h2>
+            </div>
+            <span class="section-tag">VERIFIED CREDENTIALS</span>
+          </div>
+
+          <div class="cert-grid" id="certificatesGrid">
+            <!-- Dynamic Inject via main.js -->
+          </div>
+        </section>
+
+        <!-- 9. CONTACT SECTION -->
+        <section class="section" id="contact">
+          <div class="section-header">
+            <div class="section-title-group">
+              <i data-lucide="mail" class="section-icon"></i>
+              <h2 class="section-title">Direct Communication</h2>
+            </div>
+            <span class="section-tag">GET IN TOUCH</span>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-info-panel">
+              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+                Open for full-time ML Engineering and Data Science roles, AI engineering positions, research collaborations, and technical discussions.
+              </p>
+
+              <div class="contact-list">
+                <a href="https://github.com/Kartik-hub16" target="_blank" class="contact-item" id="contactGithub">
+                  <svg class="contact-item-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                  </svg>
+                  <div class="contact-item-text">
+                    <span class="contact-item-label">GitHub Profile</span>
+                    <span class="contact-item-value">github.com/Kartik-hub16</span>
+                  </div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/kartik-kohad-885505325" target="_blank" class="contact-item" id="contactLinkedin">
+                  <svg class="contact-item-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  <div class="contact-item-text">
+                    <span class="contact-item-label">LinkedIn Connect</span>
+                    <span class="contact-item-value">linkedin.com/in/kartik-kohad</span>
+                  </div>
+                </a>
+
+                <button onclick="copyEmail()" class="contact-item" id="contactEmailBtn">
+                  <i data-lucide="mail" class="contact-item-icon"></i>
+                  <div class="contact-item-text">
+                    <span class="contact-item-label">Email Direct</span>
+                    <span class="contact-item-value">kartikkohad16@gmail.com</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-panel">
+              <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Name</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="Your Name or Organization" required />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Email Address</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="name@company.com" required />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactMessage">Message</label>
+                  <textarea id="contactMessage" class="form-textarea" placeholder="Discuss a project, opportunity, or collaboration..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-mono" style="margin-top: 4px;" id="contactSubmitBtn">
+                  <i data-lucide="send" style="width: 14px; height: 14px;"></i> Transmit Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-content" id="projectModalBody">
+      <!-- Dynamic Inject via main.js -->
+    </div>
+  </div>
+
+  <!-- COMMAND PALETTE MODAL (CMD + K) -->
+  <div class="modal-overlay" id="cmdPaletteModal">
+    <div class="modal-content cmd-palette-content">
+      <div class="cmd-input-wrapper">
+        <i data-lucide="search" style="width: 16px; height: 16px; color: var(--text-tertiary);"></i>
+        <input type="text" id="cmdInput" class="cmd-input" placeholder="Type a command or section name..." />
+        <span class="kbd-badge">ESC to close</span>
+      </div>
+      <div class="cmd-results-list" id="cmdResultsList">
+        <!-- Dynamic Inject via main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
