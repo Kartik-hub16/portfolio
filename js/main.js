@@ -296,6 +296,15 @@ function setupNavScroll() {
   }, { threshold: 0.25 });
 
   sections.forEach(sec => observer.observe(sec));
+
+  // Close mobile sidebar when a nav link is tapped
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        window.closeMobileSidebar();
+      }
+    });
+  });
 }
 
 /* --- 9. Command Palette (⌘K) --- */
@@ -422,8 +431,44 @@ window.downloadResume = function() {
 
 window.toggleMobileSidebar = function() {
   const sidebar = document.getElementById('sidebar');
-  if (sidebar) sidebar.classList.toggle('mobile-open');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (!sidebar) return;
+  const isOpen = sidebar.classList.contains('mobile-open');
+  if (isOpen) {
+    sidebar.classList.remove('mobile-open');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('mobile-open');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+  }
 };
+
+window.closeMobileSidebar = function() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+  if (overlay) overlay.classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+// Close sidebar on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar && sidebar.classList.contains('mobile-open')) {
+      window.closeMobileSidebar();
+    }
+  }
+});
+
+// Auto-close sidebar if resized back to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    window.closeMobileSidebar();
+  }
+});
 
 /* Theme Toggle (Light / Dark) */
 window.toggleTheme = function() {

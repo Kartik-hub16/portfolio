@@ -1572,51 +1572,142 @@ ol {
   }
 }
 
-/* 15. RESPONSIVE BREAKPOINTS */
-@media (max-width: 868px) {
+/* ==========================================
+   RESPONSIVE BREAKPOINTS — FULL DEVICE SUPPORT
+   Sidebar: hidden on <900px behind hamburger
+   Tablet: 600–900px, Mobile: <600px, Small: <400px
+   ========================================== */
+
+/* Sidebar mobile overlay backdrop */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.35);
+  z-index: 49;
+  backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* --- Tablet + Hamburger Layout: 600px – 900px --- */
+@media (max-width: 900px) {
+  /* Sidebar slides off-screen, toggled via .mobile-open */
   .sidebar {
     transform: translateX(-100%);
+    z-index: 50;
+    box-shadow: 4px 0 20px rgba(15, 23, 42, 0.12);
   }
 
   .sidebar.mobile-open {
     transform: translateX(0);
   }
 
+  /* Main content fills full width */
   .main-wrapper {
     margin-left: 0;
   }
 
+  /* Show hamburger button */
   .mobile-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
   }
 
+  /* Topbar: compact padding, allow wrapping */
   .topbar {
     padding: 0 16px;
+    height: auto;
+    min-height: 56px;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
+  /* Topbar buttons: smaller */
+  .topbar-actions {
+    gap: 6px;
+  }
+
+  .topbar-actions .btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+  }
+
+  /* Main content: comfortable gutters */
   .main-content {
     padding: 20px 16px;
-    gap: 28px;
+    gap: 24px;
   }
 
+  /* Metrics: 2 columns */
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Learning grid: 2 columns */
   .learning-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Cert grid: 2 columns */
   .cert-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Contact: single column */
   .contact-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Projects table: scrollable wrapper */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .projects-table {
+    min-width: 520px;
+  }
+
+  /* Projects header: wrap filter pills below title */
+  .projects-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .project-filters {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  /* Hero actions: wrap to two rows */
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  /* Social pills: wrap */
+  .social-pills-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Timeline: tighter left margin */
   .timeline-list::before {
-    left: 80px;
+    left: 76px;
   }
 
   .timeline-item {
@@ -1624,33 +1715,277 @@ ol {
   }
 
   .timeline-date {
-    width: 70px;
-    font-size: 11px;
+    width: 66px;
+    font-size: 10px;
   }
 
   .timeline-node {
-    left: 76px;
+    left: 72px;
+  }
+
+  /* Section headers: allow wrap */
+  .section-header {
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
-@media (max-width: 520px) {
+/* --- Mobile Layout: < 600px --- */
+@media (max-width: 600px) {
+  /* Base font size stays at 16px — no zoom needed */
+  html { font-size: 15px; }
+
+  /* Content gutters: tighter */
+  .main-content {
+    padding: 16px 12px;
+    gap: 20px;
+  }
+
+  /* Hero */
   .hero-name {
-    font-size: 28px;
+    font-size: clamp(24px, 8vw, 36px);
+    letter-spacing: -0.02em;
   }
 
   .hero-role {
     font-size: 15px;
   }
 
+  .hero-tagline-quote {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .social-pills-row {
+    gap: 6px;
+  }
+
+  /* Metrics: 2 columns still work on most phones */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .metric-card {
+    padding: 14px 12px;
+  }
+
+  .metric-value {
+    font-size: 20px;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 15px;
+  }
+
+  /* Section header: stack vertically */
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Tech stack chips: smaller */
+  .tech-chip {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  /* Projects table → card list on mobile */
+  .table-container {
+    overflow: visible;
+  }
+
+  .projects-table thead {
+    display: none;
+  }
+
+  .projects-table,
+  .projects-table tbody,
+  .projects-table tr,
+  .projects-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .projects-table tbody tr {
+    background-color: var(--surface-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    transition: box-shadow var(--transition-normal);
+  }
+
+  .projects-table tbody tr:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .projects-table td {
+    border: none;
+    padding: 0;
+  }
+
+  /* Card-style action row at bottom */
+  .projects-table td:last-child {
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px solid var(--surface-subtle);
+  }
+
+  /* Filters: scrollable row */
+  .projects-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .project-filters {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding-bottom: 2px;
+  }
+
+  /* Timeline: vertical, simple */
+  .timeline-list::before {
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 16px;
+    padding-bottom: 24px;
+    border-left: 2px solid var(--surface-subtle);
+    margin-left: 6px;
+  }
+
+  .timeline-date {
+    width: auto;
+    text-align: left;
+    font-size: 10px;
+    color: var(--text-secondary);
+  }
+
+  .timeline-node {
+    display: none;
+  }
+
+  /* Learning grid: 2 columns */
+  .learning-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Cert grid: 1 column */
+  .cert-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Contact: single col, full width inputs */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-item {
+    padding: 12px 14px;
+  }
+
+  /* Card panel padding */
+  .card-panel {
+    padding: 16px;
+  }
+
+  /* Modal: full screen on small phones */
+  .modal-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    margin: auto 0 0;
+    padding: 20px 16px;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+  }
+
+  /* Toast: smaller, full-width */
+  .toast-container {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .toast {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  /* Topbar: compact */
+  .topbar {
+    padding: 8px 12px;
+  }
+
+  .topbar-actions .btn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  /* Breadcrumbs: hide root on very small */
+  .breadcrumb-root,
+  .breadcrumb-separator {
+    display: none;
+  }
+}
+
+/* --- Small phones: < 400px --- */
+@media (max-width: 400px) {
+  html { font-size: 14px; }
+
+  .main-content {
+    padding: 12px 10px;
+    gap: 16px;
+  }
+
+  .hero-name {
+    font-size: clamp(20px, 9vw, 28px);
+  }
+
   .metrics-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .metric-value {
+    font-size: 22px;
   }
 
   .learning-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .cert-grid {
-    grid-template-columns: 1fr;
+  /* Topbar: icon only for actions */
+  .topbar-actions .btn-mono span {
+    display: none;
   }
 }
