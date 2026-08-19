@@ -1,6 +1,7 @@
 /* ==========================================
-   PORTFOLIO DASHBOARD — CLEAN DATA ANALYST MAIN JS
-   Dynamic renderers, section scroll observer, modal triggers & command palette
+   PORTFOLIO DASHBOARD — ORANGE & BLACK 3D MAIN JS
+   Dynamic renderers, 3D tilt physics, parallax depth,
+   section scroll observer, modal triggers & command palette
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,8 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
   setupContactForm();
   initTheme();
 
+  // 3D Physics & Parallax Engine
+  setup3DTiltPhysics();
+  setupParallaxBackground();
+  setup3DScrollReveal();
+
   setTimeout(() => {
     if (window.lucide) window.lucide.createIcons();
+    initDynamicCard3D();
   }, 100);
 });
 
@@ -33,7 +40,7 @@ function renderMetrics() {
   if (!container || !PORTFOLIO_DATA.metrics) return;
 
   container.innerHTML = PORTFOLIO_DATA.metrics.map(m => `
-    <div class="metric-card">
+    <div class="metric-card" data-tilt>
       <div class="metric-header">
         <span class="metric-label">${m.label}</span>
         <i data-lucide="${m.icon}" class="metric-icon"></i>
@@ -138,7 +145,7 @@ window.openProjectModal = function(id) {
   const body = document.getElementById('projectModalBody');
 
   const featuresList = project.features 
-    ? project.features.map(f => `<li style="margin-bottom: 6px; position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--accent-teal); font-weight: bold;">•</span>${f}</li>`).join('') 
+    ? project.features.map(f => `<li style="margin-bottom: 8px; position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--accent-orange); font-weight: bold;">•</span>${f}</li>`).join('') 
     : '';
 
   body.innerHTML = `
@@ -152,29 +159,29 @@ window.openProjectModal = function(id) {
       </button>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; flex-direction: column; gap: 18px;">
       <div>
-        <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">PROBLEM SOLVED</span>
-        <p style="font-size: 14px; color: var(--text-body); line-height: 1.6; margin-top: 4px; background-color: var(--surface-subtle); padding: 14px; border-radius: var(--radius-md); font-weight: 500;">
+        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-amber); text-transform: uppercase; letter-spacing: 0.05em;">PROBLEM SOLVED</span>
+        <p style="font-size: 14px; color: var(--text-body); line-height: 1.65; margin-top: 6px; background-color: var(--surface-subtle); padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid rgba(255, 107, 0, 0.12); font-weight: 500;">
           ${project.problem}
         </p>
       </div>
 
       ${featuresList ? `
       <div>
-        <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">KEY FEATURES & MODULES</span>
-        <ul style="font-size: 13px; color: var(--text-body); line-height: 1.6; margin-top: 6px; list-style: none;">
+        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-amber); text-transform: uppercase; letter-spacing: 0.05em;">KEY FEATURES & MODULES</span>
+        <ul style="font-size: 13.5px; color: var(--text-body); line-height: 1.6; margin-top: 8px; list-style: none;">
           ${featuresList}
         </ul>
       </div>` : ''}
 
       ${project.learned ? `
-      <div style="background-color: var(--accent-teal-tint); padding: 14px; border-radius: var(--radius-md);">
-        <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--accent-teal); text-transform: uppercase;">WHAT I LEARNED / ENGINEERING INSIGHT</span>
-        <p style="font-size: 13px; color: var(--text-heading); line-height: 1.5; margin-top: 4px; font-weight: 500;">${project.learned}</p>
+      <div style="background: rgba(255, 107, 0, 0.08); padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid rgba(255, 107, 0, 0.25);">
+        <span style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--accent-orange-bright); text-transform: uppercase; letter-spacing: 0.05em;">WHAT I LEARNED / ENGINEERING INSIGHT</span>
+        <p style="font-size: 13.5px; color: #FFFFFF; line-height: 1.55; margin-top: 5px; font-weight: 500;">${project.learned}</p>
       </div>` : ''}
 
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--surface-subtle);">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid rgba(255, 107, 0, 0.15);">
         <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">${project.metrics || 'Production Telemetry'}</span>
         <div style="display: flex; gap: 10px;">
           ${project.demo ? `
@@ -225,7 +232,7 @@ function renderLearningNow() {
   if (!container || !PORTFOLIO_DATA.learningNow) return;
 
   container.innerHTML = PORTFOLIO_DATA.learningNow.map(item => `
-    <div class="learning-cell">
+    <div class="learning-cell" data-tilt>
       <div class="learning-top-row">
         <div class="learning-icon-chip">
           <i data-lucide="${item.iconName || 'sparkles'}" class="learning-chip-icon"></i>
@@ -249,7 +256,7 @@ function renderCertificates() {
     const linkLabel = isPdf ? 'View PDF →' : 'Verify →';
 
     return `
-      <div class="cert-cell" onclick="window.open('${cert.verifyUrl}', '_blank')" style="cursor: pointer;">
+      <div class="cert-cell" data-tilt onclick="window.open('${cert.verifyUrl}', '_blank')">
         <div>
           <div class="cert-top-row" style="margin-bottom: 8px;">
             <div class="cert-icon-chip">
@@ -324,6 +331,7 @@ function setupCommandPalette() {
     { label: "Go to Certificates", section: "#certificates", icon: "award" },
     { label: "Go to Direct Communication", section: "#contact", icon: "mail" },
     { label: "Copy Email Address", action: "copyEmail", icon: "copy" },
+    { label: "View Resume PDF (Open in Tab)", action: "viewResume", icon: "file-text" },
     { label: "Download Resume PDF", action: "downloadResume", icon: "download" },
     { label: "Open GitHub Profile", url: PORTFOLIO_DATA.profile.github, icon: "external-link" },
     { label: "Open LinkedIn Profile", url: PORTFOLIO_DATA.profile.linkedin, icon: "external-link" }
@@ -336,7 +344,7 @@ function setupCommandPalette() {
     resultsContainer.innerHTML = filtered.map(a => `
       <div class="cmd-item" onclick="executeCmdAction('${a.section || ''}', '${a.action || ''}', '${a.url || ''}')">
         <div class="cmd-item-left">
-          <i data-lucide="${a.icon}" style="width: 15px; height: 15px; color: var(--accent-teal);"></i>
+          <i data-lucide="${a.icon}" style="width: 15px; height: 15px; color: var(--accent-orange);"></i>
           <span>${a.label}</span>
         </div>
         <span class="kbd-badge">↵ Select</span>
@@ -383,6 +391,8 @@ function setupCommandPalette() {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     } else if (action === 'copyEmail') {
       copyEmail();
+    } else if (action === 'viewResume') {
+      viewResume();
     } else if (action === 'downloadResume') {
       downloadResume();
     } else if (url) {
@@ -421,12 +431,22 @@ window.copyEmail = function() {
 
 window.downloadResume = function() {
   showToast('Downloading Resume PDF...');
+  const resumePath = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.profile && PORTFOLIO_DATA.profile.resumeUrl) 
+    ? PORTFOLIO_DATA.profile.resumeUrl 
+    : 'assets/Kartik_Kohad_Resume.pdf';
   const a = document.createElement('a');
-  a.href = 'assets/resume.pdf';
+  a.href = resumePath;
   a.download = 'Kartik_Kohad_Resume.pdf';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+};
+
+window.viewResume = function() {
+  const resumePath = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.profile && PORTFOLIO_DATA.profile.resumeUrl) 
+    ? PORTFOLIO_DATA.profile.resumeUrl 
+    : 'assets/Kartik_Kohad_Resume.pdf';
+  window.open(resumePath, '_blank');
 };
 
 window.toggleMobileSidebar = function() {
@@ -441,7 +461,7 @@ window.toggleMobileSidebar = function() {
   } else {
     sidebar.classList.add('mobile-open');
     if (overlay) overlay.classList.add('active');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
+    document.body.style.overflow = 'hidden';
   }
 };
 
@@ -470,7 +490,7 @@ window.addEventListener('resize', () => {
   }
 });
 
-/* Theme Toggle (Light / Dark) */
+/* Theme Toggle (Orange/Dark mode default) */
 window.toggleTheme = function() {
   const html = document.documentElement;
   const current = html.getAttribute('data-theme');
@@ -494,9 +514,9 @@ function updateThemeIcon(theme) {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem('portfolio-theme') || 'light';
+  const saved = localStorage.getItem('portfolio-theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
-  setTimeout(() => updateThemeIcon(saved), 120);
+  setTimeout(() => updateThemeIcon(saved), 100);
 }
 
 /* Toast Notification Helper */
@@ -511,7 +531,7 @@ window.showToast = function(msg) {
 
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--accent-teal);"></i> <span>${msg}</span>`;
+  toast.innerHTML = `<i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--accent-orange);"></i> <span>${msg}</span>`;
   container.appendChild(toast);
 
   if (window.lucide) window.lucide.createIcons();
@@ -523,3 +543,130 @@ window.showToast = function(msg) {
     setTimeout(() => toast.remove(), 150);
   }, 3500);
 };
+
+/* ==========================================
+   11. 3D Physics Engine & Interaction Mechanics
+   ========================================== */
+
+/* Cursor-Reactive 3D Tilt Physics */
+function setup3DTiltPhysics() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const targetSelector = '.hero-card, .about-card, .timeline-card, .contact-info-panel, [data-tilt]';
+  const cards = document.querySelectorAll(targetSelector);
+
+  cards.forEach(card => attachTiltListeners(card));
+}
+
+function initDynamicCard3D() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cards = document.querySelectorAll('.metric-card, .learning-cell, .cert-cell, .card-panel');
+  cards.forEach(card => attachTiltListeners(card));
+}
+
+function attachTiltListeners(card) {
+  if (card._hasTilt) return;
+  card._hasTilt = true;
+
+  // Add glare overlay if not present
+  if (!card.querySelector('.card-glare')) {
+    const glare = document.createElement('div');
+    glare.className = 'card-glare';
+    card.appendChild(glare);
+  }
+
+  let bounds = null;
+  const maxTilt = card.classList.contains('hero-card') ? 7 : 10;
+
+  card.addEventListener('mouseenter', () => {
+    bounds = card.getBoundingClientRect();
+    card.style.transition = 'transform 0.1s ease-out, box-shadow 0.25s ease, border-color 0.25s ease';
+  });
+
+  card.addEventListener('mousemove', (e) => {
+    if (!bounds) bounds = card.getBoundingClientRect();
+
+    const mouseX = e.clientX - bounds.left;
+    const mouseY = e.clientY - bounds.top;
+
+    const percentX = (mouseX / bounds.width) * 2 - 1; // -1 to 1
+    const percentY = (mouseY / bounds.height) * 2 - 1; // -1 to 1
+
+    const tiltX = -percentY * maxTilt;
+    const tiltY = percentX * maxTilt;
+
+    card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateZ(8px)`;
+    card.style.setProperty('--card-mouse-x', `${mouseX}px`);
+    card.style.setProperty('--card-mouse-y', `${mouseY}px`);
+    card.style.setProperty('--glare-x', `${(mouseX / bounds.width) * 100}%`);
+    card.style.setProperty('--glare-y', `${(mouseY / bounds.height) * 100}%`);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease';
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+    bounds = null;
+  });
+}
+
+/* Layered Parallax Background with Mouse & Scroll Tracking */
+function setupParallaxBackground() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const orb1 = document.getElementById('orb1');
+  const orb2 = document.getElementById('orb2');
+  const orb3 = document.getElementById('orb3');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let targetX = mouseX;
+  let targetY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+
+    document.documentElement.style.setProperty('--mouse-x', `${targetX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${targetY}px`);
+  }, { passive: true });
+
+  // Smooth animation loop for parallax orbs
+  function updateParallax() {
+    mouseX += (targetX - mouseX) * 0.05;
+    mouseY += (targetY - mouseY) * 0.05;
+
+    const normX = (mouseX / window.innerWidth) - 0.5;
+    const normY = (mouseY / window.innerHeight) - 0.5;
+
+    if (orb1) orb1.style.transform = `translate(${normX * 45}px, ${normY * 45}px)`;
+    if (orb2) orb2.style.transform = `translate(${normX * -35}px, ${normY * -35}px)`;
+    if (orb3) orb3.style.transform = `translate(${normX * 25}px, ${normY * -25}px)`;
+
+    requestAnimationFrame(updateParallax);
+  }
+
+  requestAnimationFrame(updateParallax);
+}
+
+/* 3D Scroll Reveal Animations */
+function setup3DScrollReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const sections = document.querySelectorAll('.section');
+  sections.forEach((sec, idx) => {
+    sec.classList.add('reveal-3d');
+    if (idx === 0 || idx === 1) {
+      sec.classList.add('revealed');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  sections.forEach(sec => observer.observe(sec));
+}

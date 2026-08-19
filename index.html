@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -14,10 +14,17 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Clean Data Analyst Theme Stylesheet -->
+  <!-- Orange & Black 3D Theme Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
+  <!-- 3D Parallax & Ambient Background Layers -->
+  <div class="bg-3d-grid"></div>
+  <div class="parallax-orb parallax-orb-1" id="orb1"></div>
+  <div class="parallax-orb parallax-orb-2" id="orb2"></div>
+  <div class="parallax-orb parallax-orb-3" id="orb3"></div>
+  <div class="cursor-spotlight" id="cursorSpotlight"></div>
 
   <div class="app-container">
 
@@ -111,9 +118,9 @@
           <button class="btn btn-secondary btn-mono btn-sm" onclick="copyEmail()" id="copyEmailBtn">
             <i data-lucide="copy" style="width: 13px; height: 13px;"></i> Copy Email
           </button>
-          <button class="btn btn-primary btn-mono btn-sm" onclick="downloadResume()" id="downloadResumeBtn">
+          <a href="assets/Kartik_Kohad_Resume.pdf" download="Kartik_Kohad_Resume.pdf" class="btn btn-primary btn-mono btn-sm" id="downloadResumeBtn" onclick="showToast('Downloading Resume PDF...')">
             <i data-lucide="download" style="width: 13px; height: 13px;"></i> Resume ↓
-          </button>
+          </a>
         </div>
       </header>
 
@@ -163,7 +170,7 @@
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary btn-mono" id="heroProjectsBtn">View Projects</a>
               <a href="#contact" class="btn btn-secondary btn-mono" id="heroContactBtn">Contact Me</a>
-              <button onclick="downloadResume()" class="btn btn-secondary btn-mono" id="heroResumeBtn">Resume Download ↓</button>
+              <a href="assets/Kartik_Kohad_Resume.pdf" download="Kartik_Kohad_Resume.pdf" class="btn btn-secondary btn-mono" id="heroResumeBtn" onclick="showToast('Downloading Resume PDF...')">Resume Download ↓</a>
             </div>
 
             <div class="social-pills-row">
