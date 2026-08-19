@@ -550,7 +550,9 @@ window.showToast = function(msg) {
 
 /* Cursor-Reactive 3D Tilt Physics */
 function setup3DTiltPhysics() {
+  // Disable tilt on touch-only devices
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 
   const targetSelector = '.hero-card, .about-card, .timeline-card, .contact-info-panel, [data-tilt]';
   const cards = document.querySelectorAll(targetSelector);
@@ -560,6 +562,7 @@ function setup3DTiltPhysics() {
 
 function initDynamicCard3D() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
   const cards = document.querySelectorAll('.metric-card, .learning-cell, .cert-cell, .card-panel');
   cards.forEach(card => attachTiltListeners(card));
 }
@@ -612,6 +615,7 @@ function attachTiltListeners(card) {
 /* Layered Parallax Background with Mouse & Scroll Tracking */
 function setupParallaxBackground() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 
   const orb1 = document.getElementById('orb1');
   const orb2 = document.getElementById('orb2');
