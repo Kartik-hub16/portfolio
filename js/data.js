@@ -181,22 +181,22 @@ const PORTFOLIO_DATA = {
 
   timeline: [
     {
-      period: "2023 - Present",
+      period: "2024 - Present",
       role: "B.Tech Engineering Student & AI Developer",
       institution: "Engineering Institute",
-      details: "Focusing on Artificial Intelligence, Data Science, Data Structures & Algorithms, Database Management Systems, and Distributed SaaS Systems."
+      details: "Pursuing Computer Science with a focus on Artificial Intelligence, Data Science, Data Structures & Algorithms, Database Management Systems, and Full Stack Development."
+    },
+    {
+      period: "2025 - 2026",
+      role: "Python Developer, ML & Data Analysis",
+      institution: "TalentIQ & Open-Source Security Projects",
+      details: "Transitioned into Python and Full Stack Development, then Machine Learning and Data Analysis. Co-architected TalentIQ (AI Career Intelligence Platform), built the Cyber Threat Detection System, and created the Groq-powered Professional Portfolio Generator."
     },
     {
       period: "2024 - 2025",
-      role: "Core Fullstack & AI Lead",
-      institution: "TalentIQ & Open-Source Security Projects",
-      details: "Co-architected TalentIQ (AI Career Intelligence Platform), built the Cyber Threat Detection System, and created the Groq-powered Professional Portfolio Generator."
-    },
-    {
-      period: "2023 - 2024",
-      role: "Data Science & Python Developer",
-      institution: "Independent Research & Projects",
-      details: "Developed algorithmic security parsers, cryptographic hash checking tools, and statistical data analysis scripts using Python, Pandas, and SQLite."
+      role: "Java Developer, DSA & DBMS",
+      institution: "Core Coursework & Independent Practice",
+      details: "Built a strong foundation in Java, Data Structures & Algorithms, and Database Management Systems through coursework and independent problem-solving."
     }
   ],
 
